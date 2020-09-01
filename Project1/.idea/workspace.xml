@@ -27,7 +27,10 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="15de3afe-a403-4f6e-950f-22570ae780c4" name="Default Changelist" comment="" />
+    <list default="true" id="15de3afe-a403-4f6e-950f-22570ae780c4" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project1_Grose.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Project1_Grose.cpp" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -50,13 +53,6 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="cf.first.check.clang-format" value="false" />
   </component>
-  <component name="RunManager">
-    <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -66,6 +62,8 @@
       <option name="presentableId" value="Default" />
       <updated>1598924752135</updated>
       <workItem from="1598924753369" duration="1188000" />
+      <workItem from="1598926085210" duration="91000" />
+      <workItem from="1598987296911" duration="47000" />
     </task>
     <servers />
   </component>
@@ -82,5 +80,12 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="-2779" y="443" key="FileChooserDialogImpl" timestamp="1598987339681">
+      <screen x="-3840" y="0" width="2560" height="1400" />
+    </state>
+    <state x="-2779" y="443" key="FileChooserDialogImpl/0.0.1536.824/-3840.0.2560.1400@-3840.0.2560.1400" timestamp="1598987339681" />
   </component>
 </project>

@@ -1,6 +1,6 @@
 /*
  *   @author    Written By Bradley Grose
- *   @date      Completed On 8/31/2020 at 10:30PM
+ *   @date      Completed On 8/31/2020 at 10:06PM
  *   @summary   This Program will allow the user to give their first and last 
  *              name and then a command that will do an action this action will 
  *              either be Hello, Goodbye, or invalid
