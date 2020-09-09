@@ -27,7 +27,10 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="26fad42c-d2b3-4216-ad26-d69e8ed50923" name="Default Changelist" comment="" />
+    <list default="true" id="26fad42c-d2b3-4216-ad26-d69e8ed50923" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pointers.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/pointers.cpp" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -50,11 +53,14 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="cf.first.check.clang-format" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="settings.editor.selected.configurable" value="terminal" />
   </component>
   <component name="RunManager">
-    <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true">
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
-        <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
   </component>
@@ -66,9 +72,13 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1599604960773</updated>
-      <workItem from="1599604962013" duration="332000" />
+      <workItem from="1599604962013" duration="937000" />
+      <workItem from="1599685315397" duration="1107000" />
     </task>
     <servers />
+  </component>
+  <component name="TerminalProjectNonSharedOptionsProvider">
+    <option name="shellPath" value="C:\Windows\System32\wsl.exe " />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
@@ -83,5 +93,24 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="518" y="268" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1599686335780">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="518" y="268" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1536.824/-3840.0.2560.1400@0.0.1536.824" timestamp="1599686335780" />
+    <state x="550" y="154" key="FileChooserDialogImpl" timestamp="1599685455911">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="550" y="154" key="FileChooserDialogImpl/0.0.1536.824/-3840.0.2560.1400@0.0.1536.824" timestamp="1599685455911" />
+    <state x="279" y="58" key="SettingsEditor" timestamp="1599685612591">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="279" y="58" key="SettingsEditor/0.0.1536.824/-3840.0.2560.1400@0.0.1536.824" timestamp="1599685612591" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1599685623529">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824/-3840.0.2560.1400@0.0.1536.824" timestamp="1599685623529" />
   </component>
 </project>
