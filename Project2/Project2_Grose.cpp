@@ -24,40 +24,37 @@ using namespace std;
 
 //Class Definition
 void mySort(int arr[], int size);
+
 int search(int arr[], int size, int element);
+
 void readData(int arr[], int size);
+
 void printData(int arr[], int size);
+
 void swap(int *left, int *right);
 
 
 //Main method provided by instructor
 
-int main (int argc, char **argv)
-{
+int main(int argc, char **argv) {
     int data[10] = {0};
 
     readData(data, 10);
-    printData(data,10);
-    mySort(data,10);
-    printData(data,10);
+    printData(data, 10);
+    mySort(data, 10);
+    printData(data, 10);
     int indexFound = -999;
     indexFound = search(data, 10, 1);
-    if(indexFound != -1)
-    {
+    if (indexFound != -1) {
         cout << "The number 1 was found at index: " << indexFound << endl;
-    }
-    else
-    {
+    } else {
         cout << "The number 1 was not found" << endl;
     }
 
     indexFound = search(data, 10, 99);
-    if(indexFound != -1)
-    {
+    if (indexFound != -1) {
         cout << "The number 99 was found at index: " << indexFound << endl;
-    }
-    else
-    {
+    } else {
         cout << "The number 99 was not found" << endl;
     }
 
@@ -70,12 +67,11 @@ int main (int argc, char **argv)
  * @param       int size - Size of Array
  * @return      None
  */
-void mySort(int arr[], int size)
-{
-    for(int i=0; i < size - 1; i++)
-        for(int j=0; j < size - 1; j++)
-            if(arr[j] > arr[j+1])
-                swap(&arr[j], &arr[j+1]);
+void mySort(int arr[], int size) {
+    for (int i = 0; i < size - 1; i++)
+        for (int j = 0; j < size - 1; j++)
+            if (arr[j] > arr[j + 1])
+                swap(&arr[j], &arr[j + 1]);
 }
 
 /* @summary     Searches for a given value in the array and returns the location
@@ -85,8 +81,7 @@ void mySort(int arr[], int size)
  * @return      Index of Element or -1 if not found
  */
 int search(int arr[], int size, int element) {
-    for (int i = 0; i < size - 1; i++)
-    {
+    for (int i = 0; i < size - 1; i++) {
         if (arr[i] == element) {
             return i;
         }
@@ -99,11 +94,9 @@ int search(int arr[], int size, int element) {
  * @param       int size - Size of Array
  * @return      None.
  */
-void readData(int arr[], int size)
-{
-    for(int i = 0; i < size; i++)
-    {
-        cout << "Enter Element " << i+1 << " of " << size << "\t";
+void readData(int arr[], int size) {
+    for (int i = 0; i < size; i++) {
+        cout << "Enter Element " << i + 1 << " of " << size << "\t";
         cin >> arr[i];
     }
 }
@@ -113,11 +106,9 @@ void readData(int arr[], int size)
  * @param       int size - Size of Array
  * @return      None.
  */
-void printData(int arr[], int size)
-{
+void printData(int arr[], int size) {
     cout << "\n";
-    for(int i = 0; i < size; i++)
-    {
+    for (int i = 0; i < size; i++) {
         cout << arr[i] << " ";
     }
     cout << "\n";
@@ -128,8 +119,7 @@ void printData(int arr[], int size)
  * @param       int *high - Value from higher index
  * @return      None.
  */
-void swap(int *low, int *high)
-{
+void swap(int *low, int *high) {
     int temp = *low;
     *low = *high;
     *high = temp;
