@@ -23,7 +23,10 @@
 using namespace std;
 
 /*
- * Default Constructor
+ *  @summary    Creates a blank array of size 0.
+ *  @input      None.
+ *  @output     None.
+ *  @other      None.
  */
 myArray::myArray() {
     size = 0;
@@ -31,7 +34,12 @@ myArray::myArray() {
 }
 
 /*
- * Constructor for size and what to fill it with
+ *  @summary    Creates an array with a size taken in and fills all values
+ *              with the number sent in.
+ *  @input      _size   an integer value that creates the size of the array.
+ *  @input      num     a float value that will be used to fill all spots in array.
+ *  @output     None.
+ *  @other      None.
  */
 myArray::myArray(int _size, float num) {
     size = _size;
@@ -42,7 +50,13 @@ myArray::myArray(int _size, float num) {
 }
 
 /*
- * Copies Elements from the array
+ *  @summary    Creates an array by copying another array and resizing
+ *              the array.
+ *  @input      *_arr   Takes in a float array that will be used to copy
+ *              to create a new array.
+ *  @input      _size   an integer that will be used as the new size of array.
+ *  @output     None.
+ *  @other      None.
  */
 myArray::myArray(float *_arr, int _size) {
     size = _size;
@@ -53,14 +67,21 @@ myArray::myArray(float *_arr, int _size) {
 }
 
 /*
- * Destructor for the arr[]
+ *  @summary    Destructor for myArray.
+ *  @input      None.
+ *  @output     None.
+ *  @other      None.
  */
 myArray::~myArray() {
     delete[] arr;
 }
 
 /*
- * Inserts an element at a set location and expands the array
+ *  @summary    Inserts a value at a set index spot and resized the array.
+ *  @input      index   integer value that is the index for new element.
+ *  @input      num     float value to be added at that index.
+ *  @output     None.
+ *  @other      None.
  */
 void myArray::insert(int index, float num) {
     if (index > size + 1) {
@@ -75,7 +96,10 @@ void myArray::insert(int index, float num) {
 }
 
 /*
- * Removes an element at a passed in index and shortens the array
+ *  @summary    Removes a value at an taken in index and resizes the array.
+ *  @input      index   an integer value for where the object should be removed.
+ *  @output     None.
+ *  @other      None.
  */
 void myArray::remove(int index) {
     if (index > size - 1) {
@@ -95,7 +119,11 @@ void myArray::remove(int index) {
 }
 
 /*
- * Gets the value at an index sent into the function
+ *  @summary    Returns the value for a taken in index for the array.
+ *  @input      index   the index that will return the value there.
+ *  @output     This will return -1 if it is out of bound for index, if it
+ *              is found then it will return the float for the value at index.
+ *  @other      None.
  */
 float myArray::get(int index) {
     // Index Out of Range, returns false
@@ -110,7 +138,10 @@ float myArray::get(int index) {
 }
 
 /*
- * Clears out the whole array and resets it
+ *  @summary    Clears the array and set the size back to 0.
+ *  @input      None.
+ *  @output     None.
+ *  @other      None.
  */
 void myArray::clear() {
     for (int i = 0; i < size; i++) {
@@ -120,7 +151,12 @@ void myArray::clear() {
 }
 
 /*
- * Finds an element in the array and returns the index value for the wanted value
+ *  @summary    This class will find the index of a taken in float and return the
+ *              index if found.
+ *  @input      num     takes in the float that will be searched for.
+ *  @output     returns -1 if the float is not found, if found will return the
+ *              index where it was found in the array.
+ *  @other      None.
  */
 int myArray::find(float num) {
     for (int i = 0; i < size; i++) {
@@ -132,7 +168,11 @@ int myArray::find(float num) {
 }
 
 /*
- * Checks if the arrays are equals to eachother
+ *  @summary    This class checks to see if two array objects are equal.
+ *  @input      &obj2   This is a myArray object that is taken in to compare.
+ *  @output     returns a boolean whether the current array and intake one
+ *              are the same in size and values.
+ *  @other      None.
  */
 bool myArray::equals(myArray &obj2) {
     if (size != obj2.size) {
@@ -149,7 +189,11 @@ bool myArray::equals(myArray &obj2) {
 }
 
 /*
- * Collects the data for a new array by the user
+ *  @summary    This class allows the user to input or file redirect values into
+ *              a myArray.
+ *  @input      The user will input x number of values.
+ *  @output     None.
+ *  @other      None.
  */
 void myArray::init() {
     cout << "Please Enter the elements to fill the area of size " << size << endl;
@@ -160,7 +204,10 @@ void myArray::init() {
 }
 
 /*
- * Prints out the whole array
+ *  @summary    Prints out all elements of the array separated by a space.
+ *  @input      None.
+ *  @output     Prints out the array values using standard out.
+ *  @other      None.
  */
 void myArray::print() {
     for (int i = 0; i < size; i++) {
@@ -169,5 +216,3 @@ void myArray::print() {
 
     cout << endl;
 }
-
-
