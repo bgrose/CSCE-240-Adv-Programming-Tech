@@ -84,14 +84,34 @@ myArray::~myArray() {
  *  @other      None.
  */
 void myArray::insert(int index, float num) {
+
+    float *newArray = new float[size+1];
+
+
     if (index > size + 1) {
         cout << "Invalid Range" << endl;
-    } else {
-        for (int i = size + 1; i > index; i--) {
-            arr[i] = arr[i - 1];
+    }
+    else {
+        for (int i = 0; i < size; i++) {
+            if( i < index)
+            {
+                newArray[i] = arr[i];
+            }
+            else if(i == index)
+            {
+                newArray[i] = num;
+            }
+            else
+            {
+                newArray[i] = arr[i-1];
+            }
         }
-        arr[index] = num;
+
         size++;
+        delete [] arr;
+
+        arr = newArray;
+
     }
 }
 
@@ -102,17 +122,12 @@ void myArray::insert(int index, float num) {
  *  @other      None.
  */
 void myArray::remove(int index) {
+
     if (index > size - 1) {
-        cout << "Index Out of Bounds" << endl;
+        cout << "Invalid Range" << endl;
     } else {
-        bool removed = false;
-        for (int i = 0; i < size - 1; i++) {
-            if (index == i) {
-                removed = true;
-            }
-            if (removed) {
-                arr[i] = arr[i + 1];
-            }
+        for (int i = index; i < size - 1; i++) {
+            arr[i] = arr[i+1];
         }
         size--;
     }
@@ -216,3 +231,32 @@ void myArray::print() {
 
     cout << endl;
 }
+
+
+int main(int argc, char** argv)
+{
+    myArray a1(3,0);
+    a1.print();
+    myArray a2(3,1);
+    a2.print();
+    float *temp;
+    temp = new float[3];
+    for(int i = 0; i < 3; i++) temp[i] = i;
+    myArray a3(temp, 3);
+    delete [] temp;
+
+    cout << "----------------------------------------------------" << endl;
+    cout << "Testing insert() (should print 0 1.5 0 0 ): " << endl;
+    a1.insert(1,1.5);
+    a1.print();
+    cout << "----------------------------------------------------" << endl;
+    cout << "Testing remove() (should print 0 0 0 ): " << endl;
+    a1.remove(1);
+    a1.print();
+
+
+    return 0;
+
+}
+
+
