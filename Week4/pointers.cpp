@@ -11,7 +11,7 @@
 using namespace std;
 
 int main(int argc, char **argv) {
-    int x(0);
+    int x = 0;
     x = 100;
 
     int *xPtr;
