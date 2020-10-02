@@ -14,8 +14,8 @@
  *              the index for a value. For get, it returns the float value for the
  *              index sent in. For equals it returns true or false if equal. The
  *              only other output is the cout's used to print out the array.
- *   @other     There is no main class in this as i will copy and pasting the main
- *              class examples to test my code.
+ *   @other     There is no main class in this as it was run using the test mains
+ *              provided by the instructor (Main1, Main2, Main3).
  */
 #include <iostream>
 #include "myArray.h"
@@ -85,13 +85,13 @@ myArray::~myArray() {
  */
 void myArray::insert(int index, float num) {
 
-    float *newArray = new float[size + 1];
-
+    float *newArray;
+    newArray = new float[size + 1];
 
     if (index > size + 1) {
         cout << "Invalid Range" << endl;
     } else {
-        for (int i = 0; i < size; i++) {
+        for (int i = 0; i < size + 1; i++) {
             if (i < index) {
                 newArray[i] = arr[i];
             } else if (i == index) {
@@ -219,34 +219,5 @@ void myArray::print() {
     for (int i = 0; i < size; i++) {
         cout << arr[i] << " ";
     }
-
     cout << endl;
 }
-
-
-int main(int argc, char **argv) {
-    myArray a1(3, 0);
-    a1.print();
-    myArray a2(3, 1);
-    a2.print();
-    float *temp;
-    temp = new float[3];
-    for (int i = 0; i < 3; i++) temp[i] = i;
-    myArray a3(temp, 3);
-    delete[] temp;
-
-    cout << "----------------------------------------------------" << endl;
-    cout << "Testing insert() (should print 0 1.5 0 0 ): " << endl;
-    a1.insert(1, 1.5);
-    a1.print();
-    cout << "----------------------------------------------------" << endl;
-    cout << "Testing remove() (should print 0 0 0 ): " << endl;
-    a1.remove(1);
-    a1.print();
-
-
-    return 0;
-
-}
-
-
