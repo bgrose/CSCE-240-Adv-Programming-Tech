@@ -173,7 +173,7 @@ p2 = &i;
 a) Is there a memory leak?<br />
 b) How many bytes are lost?<br />
 c) Are there any bytes that are unreachable by the end of the code? (ie. could not<br />
-delete them even if you wanted.)
+delete them even if you wanted.)<br />
 d) Fix the code such that there are no memory leaks (if there were to begin with). You may either rewrite the code below or insert the new code into the code above. If you choose the latter just make sure that it is clear where you are inserting them.
 
 28. (10pts) Properly point array1 and array2 to int arrays of size 5. Properly initialize the contents of both arrays to any values you wish. Then write a segment of code that will swap the contents of array1 and array2 using pointers.
