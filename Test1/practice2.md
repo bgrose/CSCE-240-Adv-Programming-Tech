@@ -127,7 +127,7 @@
     b) do not, do not
     c) do, do
     d) do, do not
-    Free Answer
+## Free Answer
     21. (2pts) Give an example of when the keyword const should be used in the context of
     your myArray object. Explain your reasoning.
     22. (2pts) List two good programming practices:
@@ -179,7 +179,8 @@
     the intArray class. You can assume that all other methods are properly defined and
     initialized. Add your definitions to the .h and implement them in the .cpp. Make sure that you
     indicate the use of your alternate constructor in a comment above the implementation.
-    intArray.h-->
+    ```
+    \intArray.h-->
     class intArray
     {
     private:
@@ -197,3 +198,4 @@
     #include "intArray.h"
     using namespace std;
     … (other functions implemented here)
+    ```
