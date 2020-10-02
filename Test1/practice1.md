@@ -1,5 +1,5 @@
 
-##True/False (10 pts total - 1pt each)
+## True/False (10 pts total - 1pt each)
 1. (**True**/False) C++ will automatically check for index out of bounds on arrays and throw an error if you step out of bounds.
 2. (True/**False**) The following are considered “overloaded” functions because they have the same parameters:
 `int sum(int x, int y){/*…*/ return something_int;}`
@@ -15,7 +15,7 @@
 10. (True/False) For every call to the new operator, there should be a call to delete.
 ---
 
-##Multiple Choice (10 pts total - 1pt each)
+## Multiple Choice (10 pts total - 1pt each)
 
 
 11. When passing a primitive array to a function that you DO NOT want modified, it is a good idea to:
@@ -23,7 +23,7 @@ a) pass the array by value, not by reference
 b) pass the array as a constant array using the const keyword
 c) use pointers instead since they already protect the contents in which they point to
 d) make the primitive array global by declaring it outside of all functions
-####Given the following code, answer questions 12-13
+#### Given the following code, answer questions 12-13
 ```int *data; 
 int array[5] = {1,2,3,4,5};
 int a(10),b(100);
@@ -45,7 +45,7 @@ b) *
 c) **
 d) $
 
-####Consider the following snippet of code and answer questions 15-16
+#### Consider the following snippet of code and answer questions 15-16
 ```double pi = 3.14;
 int sum(int a, int b ){
 return a + b;
@@ -66,7 +66,7 @@ a) local to the sum function
 b) local to main function
 c) global to the entire program
 d) global to any and every program that you write on your computer forever
-####Consider the following function and code segment.
+#### Consider the following function and code segment.
 ```void swap( int & first , int second )
 {
 int temp = first;
@@ -100,7 +100,7 @@ a) `double sum(double count, int value = 0 );`
 b) `double sum(double value, double count);`
 c) `int sum(int value, int count);`
 d) None of the above, the compiler cannot decide which of these to use.
-####Consider the Following code
+#### Consider the Following code
 ```[1] int main(int argc, char **argv) {
 [2] int i = 100;
 [3] int *iPtr;
@@ -116,10 +116,8 @@ c) line [4] is writing to a location that is not reserved for your program
 d) None of the above. I reject your claim there is anything wrong with this program!
 ---
 ##Free Answer (80 pts total)
+
 21. (6 pts) List at least three good programming practices.
--
--
--
 22. (3 pts) Describe one reasonable use of pointers (ie. describe a situation that you would want to use pointers instead of primitives).
 23. (4 pts) Briefly explain the difference between stack memory allocation and heap memory allocation. What kind of variables are stored in each? In which one (stack or heap) are variables automatically deallocated by your CPU at the end of execution?
 24. (10 pts) Write Boolean expressions that represent the given English expressions.
