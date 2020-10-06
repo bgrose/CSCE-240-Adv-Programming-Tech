@@ -181,7 +181,7 @@
     cout << *p1 << “ “ << *p2 << “ “ << i << endl;
     ```
     OUTPUT:
-    BYTES LEAKED:
+    <br />BYTES LEAKED:
 26. (3pts)Suppose you have the following array declaration in a program.
     double yourArray[5];
     Further suppose that in the implementation of C++ you are using a double that requires
@@ -216,3 +216,6 @@
     using namespace std;
     ```
     … (other functions implemented here)
+    ```
+    //Code Here
+    ```
