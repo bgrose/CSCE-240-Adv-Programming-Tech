@@ -34,8 +34,9 @@
     c) int count = 0, limit(19);
     d) int count = 0, limit = 19;
     e) int limit = 19;
-    13. If this code fragment was executed in an otherwise correct and complete program, what
+13. If this code fragment was executed in an otherwise correct and complete program, what
     would the output be?
+    ```
     int a = 3, b = 2, c = 5;
     if (a > b)
     a = 4;
@@ -44,13 +45,13 @@
     else
     a = 6;
     cout << a < endl;
+    '''
     a) 3
     b) 4
     c) 5
     d) 6
     e) None of the above, the cout statement belongs to the else and so is skipped.
-    Name: Midterm 1 CSCE 240, Fall 2017
-    14. Assume this code fragment is embedded in an otherwise correct and complete program.
+14. Assume this code fragment is embedded in an otherwise correct and complete program.
     What should be the output from this code segment?
     {
     for( int i = 0; i < 10; i++)
