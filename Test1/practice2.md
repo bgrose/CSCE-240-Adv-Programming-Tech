@@ -138,7 +138,7 @@
     <br />b) do not, do not
     <br />c) do, do
     <br />d) do, do not
-    ## Free Answer
+## Free Answer
 21. (2pts) Give an example of when the keyword const should be used in the context of
     your myArray object. Explain your reasoning.
 22. (2pts) List two good programming practices:
