@@ -1,18 +1,18 @@
 
 ## True/False (10 pts total - 1pt each)
-1. (**True**/False) C++ will automatically check for index out of bounds on arrays and throw an error if you step out of bounds.
+1. (True/**False**) C++ will automatically check for index out of bounds on arrays and throw an error if you step out of bounds.
 2. (True/**False**) The following are considered “overloaded” functions because they have the same parameters: <br />
 `int sum(int x, int y){/*…*/ return something_int;}`<br />
 `int diff(int x, int y){/*…*/ return something_int;}`
 3. (**True**/False) A pointer is a variable that holds the address of some other location in memory.
 4. (True/**False**) The names apple, orange, and banana are meaningful variable names for the lengths of the legs and hypotenuse of a triangle.
-5. (True/False) In the context of this class so far, the “stack” refers to the area of memory that all primitive named variables are stored in.
-6. (True/False) The following piece of code will compile and run without issues.
+5. (**True**/False) In the context of this class so far, the “stack” refers to the area of memory that all primitive named variables are stored in.
+6. (True/**False**) The following piece of code will compile and run without issues.
 `int double = 0;`
-7. (True/False) In C++, truncation can occur when a double is divided by an int even if the final result is stored in a double. (ie. after: `double n = 9.0/2;` n would equal 4 due to truncation).
-8. (True/False) Primitive arrays in C++ can easily be resized.
-9. (True/False) A memory leak refers to space allocated by a call to new that is never deallocated with a call to delete.
-10. (True/False) For every call to the new operator, there should be a call to delete.
+7. (**True**/False) In C++, truncation can occur when a double is divided by an int even if the final result is stored in a double. (ie. after: `double n = 9.0/2;` n would equal 4 due to truncation).
+8. (True/**False**) Primitive arrays in C++ can easily be resized.
+9. (**True**/False) A memory leak refers to space allocated by a call to new that is never deallocated with a call to delete.
+10. (**True**/False) For every call to the new operator, there should be a call to delete.
 ---
 
 ## Multiple Choice (10 pts total - 1pt each)
@@ -20,7 +20,7 @@
 
 11. When passing a primitive array to a function that you DO NOT want modified, it is a good idea to:<br />
 a) pass the array by value, not by reference<br />
-b) pass the array as a constant array using the const keyword<br />
+**b) pass the array as a constant array using the const keyword**<br />
 c) use pointers instead since they already protect the contents in which they point to<br />
 d) make the primitive array global by declaring it outside of all functions
 #### Given the following code, answer questions 12-13
@@ -32,15 +32,15 @@ int *d = &a;
 12. Which of the following is not a proper initialization of the data pointer?<br />
 a) `data = new int[10];`<br />
 b) `data = array;`<br />
-c) `data = b;`<br />
+**c) `data = b;`**<br />
 d) `data = &a;`
 13. Which of the following boolean statements will be true?<br />
 a) `&d == &a;`<br />
 b) `*d == &a;`<br />
-c) `*d == a;`<br />
+**c) `*d == a;`**<br />
 d) `&d == a;`
 14. Call-by-reference is denoted by the following character(s) in a function definition:<br />
-a) &<br />
+**a) &**<br />
 b) *<br />
 c) ** <br />
 d) $
@@ -59,11 +59,11 @@ res = sum(j, k);
 15. The scope of the variable pi is:<br />
 a) local to the sum function<br />
 b) local to main function<br />
-c) global to the entire program<br /> 
+**c) global to the entire program**<br /> 
 d) global to any and every program that you write on your computer forever
 16. The scope of the variable k is:<br />
 a) local to the sum function<br />
-b) local to main function<br />
+**b) local to main function**<br />
 c) global to the entire program<br />
 d) global to any and every program that you write on your computer forever
 #### Consider the following function and code segment.
@@ -86,17 +86,17 @@ swap(j, k);
 a) j == 4, k == 3;<br />
 b) j == 3, k == 4;<br />
 c) j == 4, k == 4;<br />
-d) j == 3, k == 3;
+**d) j == 3, k == 3;**
 
 18. Which of the following overloadings will be invoked by this call?<br />
 `sum(1.0, 10.0);`<br />
 a) `double sum(int count, double value);`<br />
-b) `double sum(double value, double count);`<br />
+**b) `double sum(double value, double count);`**<br />
 c) `int sum(int value, int count);`<br />
 d) None of the above, the compiler cannot decide which of these to use.
 19. Which of the following overloadings will be invoked by this call?<br />
 `sum(1.0);`<br />
-a) `double sum(double count, int value = 0 );`<br />
+**a) `double sum(double count, int value = 0 );`**<br />
 b) `double sum(double value, double count);`<br />
 c) `int sum(int value, int count);`<br />
 d) None of the above, the compiler cannot decide which of these to use.
@@ -112,7 +112,7 @@ d) None of the above, the compiler cannot decide which of these to use.
 20. This code will eventually cause a segmentation fault. Why?<br />
 a) Line [3] is not a proper declaration of a pointer<br />
 b) the delete on line [5] is illegal because i is not a pointer<br />
-c) line [4] is writing to a location that is not reserved for your program<br />
+**c) line [4] is writing to a location that is not reserved for your program**<br />
 d) None of the above. I reject your claim there is anything wrong with this program!
 ---
 ## Free Answer (80 pts total)
