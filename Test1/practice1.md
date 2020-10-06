@@ -118,8 +118,14 @@ d) None of the above. I reject your claim there is anything wrong with this prog
 ## Free Answer (80 pts total)
 
 21. (6 pts) List at least three good programming practices.
+    - Make sure there are no memory leeks in the code
+    - Properly note to code so anyone can understand what a function does and takes in/outputs
+    - Name variables useful and relevant so that they can be easily understood
 22. (3 pts) Describe one reasonable use of pointers (ie. describe a situation that you would want to use pointers instead of primitives).
+    - When working with an array that needs to be constantly resized.
 23. (4 pts) Briefly explain the difference between stack memory allocation and heap memory allocation. What kind of variables are stored in each? In which one (stack or heap) are variables automatically deallocated by your CPU at the end of execution?
+    - Heap is for dynamic memory
+    - Stack is for primitive variables (automatically deallocated once run)
 24. (10 pts) Write Boolean expressions that represent the given English expressions.
 a) int n is greater than 10 but not equal to 10
 b) int x is less than 100 but is not equal to 30 or 40
@@ -127,11 +133,11 @@ c) double g is a number that is less than int y/2
 d) double m is even or is equal to 1
 e) char c is in the range [‘a’, ‘b’, ‘c’]
 ```
-a)
-b)
-c)
-d)
-e)
+a)  (n > 10 && n != 10)
+b)  (x < 100 && x!= 30 && x!= 40)
+c)  (g < (y/2))
+d)  (m % 2 == 0 || m == 1)
+e)  (c == ‘a’ || c == ‘b’ || c == ‘c’)
 ```
 
 #### Consider the Following Code
@@ -149,15 +155,22 @@ p2 = &j;
 cout << i << “ “ << j << “ “ << *p1 << “ “ << *p2 << endl;
 ```
 25. (12 pts + 2 EC) Give the output from this code fragment For 2 pt EC, is there a memory leak? If so, how many bytes were lost (an int requires 4 bytes)?
+```
+10 20 10 random number
+15 20 15 30
+15 20 15 20
+```
+- No memory leeks
 26. (10 pts)Suppose you have the following array declaration in a program. `double yourArray[10] = {1,3,5,7,9,2,4,6,8,10};` In the implementation of C++ you are using, a double requires 8 bytes.
 <br />a) When your program runs, how much memory is required for this array?
+- 80 bytes
 <br />b) What are the values of yourArray at the following indices:
-yourArray[0] = _________ yourArray[4] = _________
-yourArray[7] = _________ yourArray[9] = _________
+yourArray[0] = ___1_____ yourArray[4] = ____9____
+yourArray[7] = ___6_____ yourArray[9] = ____10____
 <br />c) If yourArray starts at memory location decimal 104. What will be the addresses of
 the following:
-yourArray[0] -> _________ yourArray[4] -> _________
-yourArray[7] -> _________ yourArray[9] -> _________
+yourArray[0] -> ___104___ yourArray[4] -> ___136___
+yourArray[7] -> ___160___ yourArray[9] -> ___176___
 
 #### Consider the following code
 ```
@@ -171,16 +184,42 @@ p2 = &i;
 ```
 27. (10 pts) Given the following code, answer questions a-d.<br />
 a) Is there a memory leak?<br />
+    - Yes
 b) How many bytes are lost?<br />
+    - 28 Bytes
 c) Are there any bytes that are unreachable by the end of the code? (ie. could not<br />
 delete them even if you wanted.)<br />
+    - 4 Bytes
 d) Fix the code such that there are no memory leaks (if there were to begin with). You may either rewrite the code below or insert the new code into the code above. If you choose the latter just make sure that it is clear where you are inserting them.
-
+```
+int arr[5] = {1,2,3,4,5};
+int i = 0;
+int *p1, *p2;
+p1 = &arr;
+p2 = new int;
+p1 = new int[6];
+delete p2;
+p2 = &i;
+delete [] p1;
+```
 28. (10pts) Properly point array1 and array2 to int arrays of size 5. Properly initialize the contents of both arrays to any values you wish. Then write a segment of code that will swap the contents of array1 and array2 using pointers.
 ```
 int main(int argc, char **argv)
 {
 int *array1, *array2;
+
+array1 = new int[5];
+array2 = new int[5];
+for( int i = 0; i < 5; i++)
+{
+array1[i] = 0;
+array2[i] = 1;
+}
+int *temp;
+temp = array1;
+array1 = array2;
+array2 = temp;
+
 return 0;
 }
 ```
@@ -196,6 +235,21 @@ index = findLetter(data, ‘C’);
 //The resulting index should be 4.
 }
 //implement your function here
+
+int findLetter(char str[], char c)
+{
+int strlen = 0;
+while(str[strlen++] != ‘\0’) strlen++;
+for(int i = 0; i < strlen; i++)
+{
+if(str[i] == c) return i;
+}
+return -1;
+}
+
+
 ```
 30. For 1pts EC, discuss (do not implement) how you would modify this function to return the index of the LAST instance of the single character.
+- Start at the end and iterate backwards
 31. For another 2pts EC, discuss (do not implement) possible strategies for modifying the function to return the indices of all instances of the single character sent in.
+- Pass another array as a pointer and keep track of the indices with that.
