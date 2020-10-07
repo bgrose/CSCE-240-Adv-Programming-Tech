@@ -131,7 +131,8 @@ void myArray::remove(int index) {
  *              is found then it will return the float for the value at index.
  *  @other      None.
  */
-float myArray::get(int index) {
+float myArray::get(int index) const
+{
     // Index Out of Range, returns false
     if ((index < 0) || (index >= size)) {
         cout << "Invalid index." << endl;
@@ -164,7 +165,8 @@ void myArray::clear() {
  *              index where it was found in the array.
  *  @other      None.
  */
-int myArray::find(float num) {
+int myArray::find(float num) const
+{
     for (int i = 0; i < size; i++) {
         if (arr[i] == num) {
             return i;
@@ -180,7 +182,8 @@ int myArray::find(float num) {
  *              are the same in size and values.
  *  @other      None.
  */
-bool myArray::equals(myArray &obj2) {
+bool myArray::equals(myArray &obj2) const
+{
     if (size != obj2.size) {
         return false;
     }
@@ -215,9 +218,74 @@ void myArray::init() {
  *  @output     Prints out the array values using standard out.
  *  @other      None.
  */
-void myArray::print() {
+void myArray::print() const
+{
     for (int i = 0; i < size; i++) {
         cout << arr[i] << " ";
     }
     cout << endl;
+}
+
+bool myArray::operator!=(myArray& obj2)
+{
+
+}
+float myArray::operator[](int index)
+{
+
+}
+void myArray::operator()(int index, float num)
+{
+
+}
+
+myArray& myArray::operator=(myArray obj2)
+{
+    for (int i = 0; i < size; i++) {
+        arr[i] = obj2.arr[i];
+    }
+
+    return this*;
+}
+myArray myArray::operator+(myArray& obj2)
+{
+    myArray newArr(obj2.size, 0);
+
+    for(int i=0; i < size; i++)
+    {
+        newArr.insert(i, arr[i]+obj2[i]);
+    }
+
+    return newArray;
+}
+void myArray::operator+=(myArray& obj2)
+{
+    for(int i = 0; i < obj2.size; i++)
+    {
+        insert(size + 1 + i, obj2[i]);
+    }
+
+}
+istream& operator>>(istream& in, myArray& rhs)
+{
+    cout << "Please Enter the elements to fill the area of size " << rhs.size << endl;
+
+    for (int i = 0; i < rhs.size; i++) {
+        in >> rhs[i];
+    }
+    return in;
+}
+ostream& operator<<(ostream& out, myArray& rhs)
+{
+    if(rhs.size == 0)
+    {
+        out << "NULL";
+    }
+    else{
+            for (int i = 0; i < rhs.size; i++) {
+                out << rhs[i] << " ";
+            }
+    }
+
+    return out;
 }

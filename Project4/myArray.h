@@ -17,19 +17,19 @@ public:
 
     void insert(int,float);
     void remove(int);
-    float get(int);
+    float get(int) const;
     void clear();
-    int find(float);
-    bool equals(myArray&);
+    int find(float) const;
+    bool equals(myArray&) const;
     void init();
-    void print();
+    void print() const;
 
     //Project 5 Additions
     bool operator!=(myArray&);
     float operator[](int);
     void operator()(int, float);
-    const myArray& operator=(myArray)
-    const myArray operator+(myArray)
+    myArray& operator=(myArray);
+    myArray operator+(myArray&);
     void operator+=(myArray&);
     friend istream& operator>>(istream&, myArray&);
     friend ostream& operator<<(ostream&, myArray&);

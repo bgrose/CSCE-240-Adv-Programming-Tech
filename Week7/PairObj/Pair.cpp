@@ -40,7 +40,7 @@ istream& operator>>(istream& is, Pair& rhs)
     return is;
 }
 		
-void Pair::print()
+void Pair::print() const
 {
 	cout << "Element 1: " << data[0] << endl; 
 	cout << "Element 2: " << data[1] << endl; 
