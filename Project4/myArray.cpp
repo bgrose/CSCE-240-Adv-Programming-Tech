@@ -226,55 +226,123 @@ void myArray::print() const
     cout << endl;
 }
 
+/*
+ *  @summary
+ *  @input
+ *  @output
+ *  @other      None.
+ */
 bool myArray::operator!=(myArray& obj2)
 {
+    if (size != obj2.size) {
+        return true;
+    }
+
+    for (int i = 0; i < size; i++) {
+        if (get(i) != obj2.arr[i]) {
+            return true;
+        }
+    }
+
+    return false; //No Mismatch Found
 
 }
+
+/*
+ *  @summary
+ *  @input
+ *  @output
+ *  @other      None.
+ */
 float myArray::operator[](int index)
 {
-
+    if(index >= 0 && index < size)
+        return arr[index];
+    else
+        return -1;
 }
+
+/*
+ *  @summary
+ *  @input
+ *  @output
+ *  @other      None.
+ */
 void myArray::operator()(int index, float num)
 {
-
+    arr[index] = num;
 }
 
+/*
+ *  @summary
+ *  @input
+ *  @output
+ *  @other      None.
+ */
 myArray& myArray::operator=(myArray obj2)
 {
     for (int i = 0; i < size; i++) {
         arr[i] = obj2.arr[i];
     }
 
-    return this*;
+    return *this;
 }
+
+/*
+ *  @summary
+ *  @input
+ *  @output
+ *  @other      None.
+ */
 myArray myArray::operator+(myArray& obj2)
 {
     myArray newArr(obj2.size, 0);
 
     for(int i=0; i < size; i++)
     {
-        newArr.insert(i, arr[i]+obj2[i]);
+        newArr.insert(i, arr[i]+obj2.arr[i]);
     }
 
-    return newArray;
+    return newArr;
 }
+
+/*
+ *  @summary
+ *  @input
+ *  @output
+ *  @other      None.
+ */
 void myArray::operator+=(myArray& obj2)
 {
     for(int i = 0; i < obj2.size; i++)
     {
-        insert(size + 1 + i, obj2[i]);
+        insert(size + 1 + i, obj2.arr[i]);
     }
 
 }
+
+/*
+ *  @summary
+ *  @input
+ *  @output
+ *  @other      None.
+ */
 istream& operator>>(istream& in, myArray& rhs)
 {
     cout << "Please Enter the elements to fill the area of size " << rhs.size << endl;
 
     for (int i = 0; i < rhs.size; i++) {
-        in >> rhs[i];
+        in >> rhs.arr[i];
     }
     return in;
 }
+
+/*
+ *  @summary
+ *  @input
+ *  @output
+ *  @other      None.
+ */
 ostream& operator<<(ostream& out, myArray& rhs)
 {
     if(rhs.size == 0)
@@ -283,9 +351,14 @@ ostream& operator<<(ostream& out, myArray& rhs)
     }
     else{
             for (int i = 0; i < rhs.size; i++) {
-                out << rhs[i] << " ";
+                out << rhs.arr[i] << " ";
             }
     }
 
     return out;
+}
+
+int main(int argc, char** argv)
+{
+    return 0;
 }
