@@ -1,19 +1,23 @@
 /*
  *   @author    Written By Bradley Grose
- *   @date
+ *   @date      Completed 10/16/2020 at 1PM
  *   @summary   This code makes a functionality that mimics an
  *              array list that could be found in Java. This allows
  *              for the user to create array list, change size, add
  *              elements, remove elements, find elements, get a value
  *              at a set index, set values to an array, and print out
- *              the whole array.
+ *              the whole array. It also now has operator overloaders
+ *              and ostream/istream so the user can take advantage of the
+ *              functions of cout, cin, +, +=, [], (), !=.
  *   @input     The input from this is dependant one what class is being
  *              called by the main class. The only input done in this class
- *              is in init, it takes the values to fill array
+ *              is in init, it takes the values to fill array. In addition it can
+ *              be used in cin and istream to take in values.
  *   @output    The only output is in a few classes. For example, find returns
  *              the index for a value. For get, it returns the float value for the
  *              index sent in. For equals it returns true or false if equal. The
- *              only other output is the cout's used to print out the array.
+ *              other output is the cout's used to print out the array. In addition, the
+ *              ostream now allows the user to cout an object.
  *   @other     There is no main class in this as it was run using the test mains
  *              provided by the instructor (Main1, Main2, Main3).
  */
@@ -41,11 +45,11 @@ myArray::myArray() {
  *  @output     None.
  *  @other      None.
  */
-myArray::myArray(int _size, float num) {
+myArray::myArray(int _size, float _num) {
     size = _size;
-    arr = new float[size];
+    arr = new float[_size];
     for (int i = 0; i < size; i++) {
-        arr[i] = num;
+        arr[i] = _num;
     }
 }
 
@@ -60,9 +64,23 @@ myArray::myArray(int _size, float num) {
  */
 myArray::myArray(float *_arr, int _size) {
     size = _size;
-    arr = new float[size];
+    arr = new float[_size];
     for (int i = 0; i < size; i++) {
         arr[i] = _arr[i];
+    }
+}
+
+/*
+ *  @summary    Creates a constructor that copies the array passed in.
+ *  @input      myArray& obj2 is the array to be copied over.
+ *  @output     None.
+ *  @other      None.
+ */
+myArray::myArray(const myArray &obj2) {
+    size = obj2.size;
+    arr = new float[size];
+    for (int i = 0; i < size; i++) {
+        arr[i] = obj2.arr[i];
     }
 }
 
@@ -83,27 +101,19 @@ myArray::~myArray() {
  *  @output     None.
  *  @other      None.
  */
-void myArray::insert(int index, float num) {
-
-    float *newArray;
-    newArray = new float[size + 1];
-
-    if (index > size + 1) {
-        cout << "Invalid Range" << endl;
-    } else {
-        for (int i = 0; i < size + 1; i++) {
-            if (i < index) {
-                newArray[i] = arr[i];
-            } else if (i == index) {
-                newArray[i] = num;
-            } else {
-                newArray[i] = arr[i - 1];
-            }
-        }
-        size++;
-        delete[] arr;
-        arr = newArray;
+void myArray::insert(int _index, float _num) {
+    float *temp;
+    temp = arr;
+    arr = new float[size + 1];
+    for (int i = 0; i < _index; i++) {
+        arr[i] = temp[i];
     }
+    arr[_index] = _num;
+    for (int i = _index + 1; i < size + 1; i++) {
+        arr[i] = temp[i - 1];
+    }
+    size = size + 1;
+    delete[] temp;
 }
 
 /*
@@ -112,16 +122,19 @@ void myArray::insert(int index, float num) {
  *  @output     None.
  *  @other      None.
  */
-void myArray::remove(int index) {
-
-    if (index > size - 1) {
-        cout << "Invalid Range" << endl;
-    } else {
-        for (int i = index; i < size - 1; i++) {
-            arr[i] = arr[i + 1];
+void myArray::remove(int _index) {
+    float *temp;
+    temp = arr;
+    arr = new float[size - 1];
+    for (int i = 0; i < size - 1; i++) {
+        if (i != _index && i < _index) {
+            arr[i] = temp[i];
+        } else {
+            arr[i] = temp[i + 1];
         }
-        size--;
     }
+    delete[] temp;
+    size = size - 1;
 }
 
 /*
@@ -131,8 +144,7 @@ void myArray::remove(int index) {
  *              is found then it will return the float for the value at index.
  *  @other      None.
  */
-float myArray::get(int index) const
-{
+float myArray::get(int index) const {
     // Index Out of Range, returns false
     if ((index < 0) || (index >= size)) {
         cout << "Invalid index." << endl;
@@ -151,9 +163,8 @@ float myArray::get(int index) const
  *  @other      None.
  */
 void myArray::clear() {
-    for (int i = 0; i < size; i++) {
-        arr[i] = 0;
-    }
+    delete[] arr;
+    arr = new float[0];
     size = 0;
 }
 
@@ -165,14 +176,15 @@ void myArray::clear() {
  *              index where it was found in the array.
  *  @other      None.
  */
-int myArray::find(float num) const
-{
+int myArray::find(float num) const {
+    int ret = -1;
     for (int i = 0; i < size; i++) {
         if (arr[i] == num) {
-            return i;
+            ret = i;
+            break;
         }
     }
-    return -1; //Not Found
+    return ret;
 }
 
 /*
@@ -182,19 +194,15 @@ int myArray::find(float num) const
  *              are the same in size and values.
  *  @other      None.
  */
-bool myArray::equals(myArray &obj2) const
-{
-    if (size != obj2.size) {
-        return false;
-    }
-
+bool myArray::equals(myArray &obj2) const {
+    bool ret = true;
     for (int i = 0; i < size; i++) {
-        if (get(i) != obj2.get(i)) {
-            return false;
+        if (arr[i] != obj2.arr[i]) {
+            ret = false;
+            break;
         }
     }
-
-    return true; //No Mismatch Found
+    return ret;
 }
 
 /*
@@ -218,8 +226,7 @@ void myArray::init() {
  *  @output     Prints out the array values using standard out.
  *  @other      None.
  */
-void myArray::print() const
-{
+void myArray::print() const {
     for (int i = 0; i < size; i++) {
         cout << arr[i] << " ";
     }
@@ -227,13 +234,13 @@ void myArray::print() const
 }
 
 /*
- *  @summary
- *  @input
- *  @output
+ *  @summary    Checks to see if two myArray objects are equal when
+ *              using operator overloading.
+ *  @input      &obj2 is a myArray object that is passed in by reference.
+ *  @output     returns a boolean true or false if they are not equal.
  *  @other      None.
  */
-bool myArray::operator!=(myArray& obj2)
-{
+bool myArray::operator!=(myArray &obj2) {
     if (size != obj2.size) {
         return true;
     }
@@ -249,86 +256,97 @@ bool myArray::operator!=(myArray& obj2)
 }
 
 /*
- *  @summary
- *  @input
- *  @output
+ *  @summary    This operator overloaded allows the user to use [] to get an element
+ *              to the array in object by simply using the object name.
+ *  @input      index   the index value of where the object is located.
+ *  @output     returns the object at index. If index does not exist, returns -1.
  *  @other      None.
  */
-float myArray::operator[](int index)
-{
-    if(index >= 0 && index < size)
+float myArray::operator[](int index) {
+    if (index >= 0 && index < size)
         return arr[index];
     else
-        return -1;
+        cout << "index not found" << endl;
+    return -1;
 }
 
 /*
- *  @summary
- *  @input
- *  @output
+ *  @summary    This function allows you to change a value of arr at a given point.
+ *  @input      index   index to be altered.
+ *  @input      num     value to be put at index.
+ *  @output     None.
  *  @other      None.
  */
-void myArray::operator()(int index, float num)
-{
-    arr[index] = num;
-}
-
-/*
- *  @summary
- *  @input
- *  @output
- *  @other      None.
- */
-myArray& myArray::operator=(myArray obj2)
-{
-    for (int i = 0; i < size; i++) {
-        arr[i] = obj2.arr[i];
+void myArray::operator()(int index, float num) {
+    if (index >= 0 && index < size) {
+        arr[index] = num;
+    } else {
+        cout << "index not found" << endl;
     }
+}
 
+/*
+ *  @summary    This overloaded operator allows the user to set two object equal to
+ *              the same values.
+ *  @input      obj2    a constant myArray object that is what the object will be set equal to.
+ *  @output     The return is an object the same as obj2.
+ *  @other      None.
+ */
+myArray &myArray::operator=(const myArray obj2) {
+    myArray temp(obj2);
+    delete[] arr;
+    size = temp.size;
+    float *arrNew;
+    arrNew = new float[size];
+    for (int i = 0; i < size; i++) {
+        arrNew[i] = temp[i];
+    }
+    arr = arrNew;
     return *this;
 }
 
 /*
- *  @summary
- *  @input
- *  @output
+ *  @summary    This overloaded operator allows the user to add the values of 2 of the same size
+ *              objects together.
+ *  @input      &obj2   constant myArray that will be added to the other myArray object.
+ *  @output     returns the added together myArray object.
  *  @other      None.
  */
-myArray myArray::operator+(myArray& obj2)
-{
-    myArray newArr(obj2.size, 0);
-
-    for(int i=0; i < size; i++)
-    {
-        newArr.insert(i, arr[i]+obj2.arr[i]);
-    }
-
-    return newArr;
+myArray myArray::operator+(const myArray &obj2) {
+    myArray temp(size, 0);
+    for (int i = 0; i < obj2.size; i++)
+        temp.arr[i] = arr[i] + obj2.arr[i];
+    return temp;
 }
 
 /*
- *  @summary
- *  @input
- *  @output
+ *  @summary    Overloaded operator that allows you to combine two objects together
+ *  @input      &obj2   constant object that is the righthand side of expression
+ *  @output     While there is no return, the lefthand side will be equal to the combined
+ *              object.
  *  @other      None.
  */
-void myArray::operator+=(myArray& obj2)
-{
-    for(int i = 0; i < obj2.size; i++)
-    {
-        insert(size + 1 + i, obj2.arr[i]);
-    }
-
+void myArray::operator+=(const myArray &obj2) {
+    int oldSize = size;
+    size = oldSize + obj2.size;
+    float *arrNew;
+    arrNew = new float[size];
+    for (int i = 0; i < oldSize; i++)
+        arrNew[i] = arr[i];
+    for (int i = oldSize; i < size; i++)
+        arrNew[i] = obj2.arr[i - oldSize];
+    delete[] arr;
+    arr = arrNew;
 }
 
 /*
- *  @summary
- *  @input
- *  @output
+ *  @summary    Istream that allows the user to cin to an object
+ *  @input      &in     values being used to cin to an object
+ *  @input      &rhs    the object being filled by the cin
+ *  @output     returns the stream of values
  *  @other      None.
  */
-istream& operator>>(istream& in, myArray& rhs)
-{
+istream &operator>>(istream &in, myArray &rhs) {
     cout << "Please Enter the elements to fill the area of size " << rhs.size << endl;
 
     for (int i = 0; i < rhs.size; i++) {
@@ -338,27 +356,19 @@ istream& operator>>(istream& in, myArray& rhs)
 }
 
 /*
- *  @summary
- *  @input
- *  @output
+ *  @summary    Ostream that prints out the array using cout
+ *  @input      &out    The ostream being used in the cout to print
+ *  @input      &rhs    The object that will be printed
+ *  @output     returns the ostream to print for the object.
  *  @other      None.
  */
-ostream& operator<<(ostream& out, myArray& rhs)
-{
-    if(rhs.size == 0)
-    {
+ostream &operator<<(ostream &out, myArray &rhs) {
+    if (rhs.size == 0) {
         out << "NULL";
+    } else {
+        for (int i = 0; i < rhs.size; i++) {
+            out << rhs.arr[i] << " ";
+        }
     }
-    else{
-            for (int i = 0; i < rhs.size; i++) {
-                out << rhs.arr[i] << " ";
-            }
-    }
-
     return out;
-}
-
-int main(int argc, char** argv)
-{
-    return 0;
 }

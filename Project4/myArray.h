@@ -9,30 +9,33 @@
 using namespace std;
 
 class myArray {
+    friend istream& operator>>(istream&, myArray&);
+    friend ostream& operator<<(ostream&, myArray&);
 public:
     myArray();
     myArray(int,float);
     myArray(float*, int);
+    myArray(const myArray&);
     ~myArray();
 
     void insert(int,float);
     void remove(int);
+
     float get(int) const;
     void clear();
+
     int find(float) const;
     bool equals(myArray&) const;
+
     void init();
     void print() const;
 
-    //Project 5 Additions
-    bool operator!=(myArray&);
     float operator[](int);
     void operator()(int, float);
-    myArray& operator=(myArray);
-    myArray operator+(myArray&);
-    void operator+=(myArray&);
-    friend istream& operator>>(istream&, myArray&);
-    friend ostream& operator<<(ostream&, myArray&);
+    bool operator!=(myArray&);
+    myArray& operator=(const myArray);
+    myArray operator+(const myArray&);
+    void operator+=(const myArray&);
 
 private:
     float* arr;

@@ -8,16 +8,17 @@
 using namespace std;
 
 
-int main(int argc, char** argv)
+
+int main()
 {
-    int *p1, *p2, i(100);
-    p1 = new int;
-    p2 = &i;
-    *p1 = 10;
-    *p2 = 20;
-    cout << *p1 << "" << *p2 << "" << i << endl;
-    p1 = p2;
-    cout << *p1 << "" << *p2 << "" << i << endl;
+    int num(0);
+    int count(0), limit(19);
+    int count1 = 0, limit1(19);
+    int count2 = 0, limit2 = 19;
+
+    cout << num << count << limit << count1 << limit1 << count2 << limit2;
+
 
     return 0;
+
 }
