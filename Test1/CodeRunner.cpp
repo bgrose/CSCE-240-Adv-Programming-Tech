@@ -7,18 +7,13 @@
 
 using namespace std;
 
+PositiveInt() {
+    private: 
+        int num;
+}
 
-
-int main()
+int PositiveInt::operator-(const PositiveInt &obj2)
 {
-    int num(0);
-    int count(0), limit(19);
-    int count1 = 0, limit1(19);
-    int count2 = 0, limit2 = 19;
-
-    cout << num << count << limit << count1 << limit1 << count2 << limit2;
-
-
-    return 0;
+    return num - obj2.num;
 
 }
