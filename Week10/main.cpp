@@ -13,7 +13,7 @@ int main(int argc, char** argv)
 	myArray<char> a2(5,'c'); 
 	a2.print();
 	
-	myArray a3(5,1.5);
+	myArray<float> a3(5,1.5);
 	
 	//a1.insert(0,1.5);
 	//a1.insert(0,1.5);

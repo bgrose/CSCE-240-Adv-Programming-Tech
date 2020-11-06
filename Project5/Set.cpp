@@ -1,9 +1,14 @@
 /*
  *   @author    Written By Bradley Grose
- *   @date      Completed
- *   @summary
- *   @input
- *   @output
+ *   @date      Completed 11/5/2020 @ 9 PM
+ *   @summary   This project will make a Set object what can do many different features, such as 3 different
+ *              ways of making an Set, a destructor, A function that finds the union without repeated values,
+ *              a boolean check if a set is a subset of another, a subtraction and equals operator, and the ability
+ *              to print out in Cartesian form and normal set form.
+ *   @input     The inputs are based on the needed values for functions described in each functions comment block
+ *              header.
+ *   @output    The output this file has is returns in various functions described below
+ *              that can be used in tester mains.
  *   @other     There is no main class in this as it was run using the test mains
  *              provided by the instructor (Main1, Main2, Main3).
  */
@@ -21,9 +26,8 @@ using namespace std;
  *  @output     Creates Set Object.
  *  @other      None.
  */
-template <class T>
-Set<T>::Set()
-{
+template<class T>
+Set<T>::Set() {
     size = 0;
     set_values = new T[size];
 }
@@ -36,11 +40,13 @@ Set<T>::Set()
  *  @output     Creates an object.
  *  @other      None.
  */
-template <class T>
-Set<T>::Set(int _size, T *_values)
-{
+template<class T>
+Set<T>::Set(int _size, T *_values) {
     size = _size;
-    set_values = _values;
+    set_values = new T[size];
+    for (int i = 0; i < size; i++) {
+        set_values[i] = _values[i];
+    }
 }
 
 /*
@@ -49,16 +55,13 @@ Set<T>::Set(int _size, T *_values)
  *  @output     Creates an object.
  *  @other      None.
  */
-template <class T>
-Set<T>::Set(const Set<T>& _obj2)
-{
+template<class T>
+Set<T>::Set(const Set<T> &_obj2) {
     size = _obj2.size;
     set_values = new T[size];
-    for(int i = 0; i < size; i++)
-    {
+    for (int i = 0; i < size; i++) {
         set_values[i] = _obj2.set_values[i];
     }
-
 }
 
 /*
@@ -67,10 +70,9 @@ Set<T>::Set(const Set<T>& _obj2)
  *  @output     None.
  *  @other      None.
  */
-template <class T>
-Set<T>::~Set()
-{
-    delete [] set_values;
+template<class T>
+Set<T>::~Set() {
+    delete[] set_values;
 }
 
 /*
@@ -79,10 +81,16 @@ Set<T>::~Set()
  *  @output     Returns a Set<T> that is the common values between array.
  *  @other      None.
  */
-template <class T>
-Set<T> Set<T>::intersection(const Set<T>& _obj2)
-{
-
+template<class T>
+Set<T> Set<T>::intersection(const Set<T> &_obj2) {
+    Set<T> temp;
+    for (int i = 0; i < size; i++) {
+        for (int j = 0; j < _obj2.size; j++) {
+            if (set_values[i] == _obj2.set_values[j])
+                temp.append(set_values[i]);
+        }
+    }
+    return temp;
 }
 
 /*
@@ -92,18 +100,19 @@ Set<T> Set<T>::intersection(const Set<T>& _obj2)
  *  @output     Returns a boolean if subset is true.
  *  @other      None.
  */
-template <class T>
-bool Set<T>::subset(const Set<T>& _obj2)
-{
-    for(int i=0; i<size; i++)
-    {
+template<class T>
+bool Set<T>::subset(const Set<T> &_obj2) {
+    for (int i = 0; i < size; i++) {
         bool found = false;
-        for(int j=0; j<_obj2.size; j++)
-            if(set_values[i] == _obj2.set_values[j])
+        for (int j = 0; j < _obj2.size; j++)
+            if (set_values[i] == _obj2.set_values[j])
                 found = true;
-        if(!found)
+        if (!found) {
+            cout << "false" << endl;
             return false;
+        }
     }
+    cout << "true" << endl;
     return true;
 }
 
@@ -114,10 +123,21 @@ bool Set<T>::subset(const Set<T>& _obj2)
  *  @output     Returns a Set<T> that is the result of the subtraction.
  *  @other      None.
  */
-template <class T>
-Set<T> Set<T>::operator-(const Set<T>& _obj2)
-{
-
+template<class T>
+Set<T> Set<T>::operator-(const Set<T> &_obj2) {
+    Set<T> temp;
+    for (int i = 0; i < size; i++) {
+        bool add = true;
+        for (int j = 0; j < _obj2.size; j++) {
+            if (set_values[i] == _obj2.set_values[j]) {
+                add = false;
+            }
+        }
+        if (add) {
+            temp.append(set_values[i]);
+        }
+    }
+    return temp;
 }
 
 /*
@@ -126,15 +146,18 @@ Set<T> Set<T>::operator-(const Set<T>& _obj2)
  *  @output     Returns a Set<T> that is the copy of _obj2.
  *  @other      None.
  */
-template <class T>
-Set<T> Set<T>::operator=(const Set<T>& _obj2)
-{
-    size = _obj2.size;
-    set_values = new T[size];
-    for(int i = 0; i < size; i++)
-    {
-        set_values[i] = _obj2.set_values[i];
+template<class T>
+Set<T> Set<T>::operator=(const Set<T> &_obj2) {
+    Set<T> temp(_obj2);
+    delete[] set_values;
+    size = temp.size;
+    T *newVals;
+    newVals = new T[size];
+    for (int i = 0; i < size; i++) {
+        newVals[i] = temp.set_values[i];
     }
+    set_values = newVals;
+    return *this;
 }
 
 /*
@@ -144,16 +167,14 @@ Set<T> Set<T>::operator=(const Set<T>& _obj2)
  *  @output     No Return, Prints out Cartesian Product.
  *  @other      None.
  */
-template <class T>
-void Set<T>::printCartesianProduct(const Set<T>& _obj2)
-{
-    for(int i=0; i < size; i++)
-    {
-        for(int j=0; j < _obj2.size; j++)
-        {
+template<class T>
+void Set<T>::printCartesianProduct(const Set<T> &_obj2) {
+    for (int i = 0; i < size; i++) {
+        for (int j = 0; j < _obj2.size; j++) {
             cout << "{" << set_values[i] << "," << _obj2.set_values[j] << "}, ";
         }
     }
+    cout << endl;
 }
 
 /*
@@ -162,21 +183,16 @@ void Set<T>::printCartesianProduct(const Set<T>& _obj2)
  *  @output     None.
  *  @other      None.
  */
-template <class T>
-void Set<T>::print()
-{
-    if(size == 0)
-    {
+template<class T>
+void Set<T>::print() {
+    if (size == 0) {
         cout << "NULL" << endl;
-    }
-    else
-    {
+    } else {
         cout << "{";
-        for(int i=0; i<size-1; i++)
-        {
+        for (int i = 0; i < size - 1; i++) {
             cout << set_values[i] << ",";
         }
-        cout << set_values[size-1] << "}" << endl;
+        cout << set_values[size - 1] << "}" << endl;
     }
 }
 
@@ -186,14 +202,40 @@ void Set<T>::print()
  *  @output     Returns a Set<T> that is the combined union of the two sets.
  *  @other      None.
  */
-template <class T>
-Set<T> Set<T>::Union(const Set<T>& _obj2)
-{
-
+template<class T>
+Set<T> Set<T>::myUnion(const Set<T> &_obj2) {
+    Set<T> temp(_obj2);
+    for (int i = 0; i < _obj2.size - 1; i++) {
+        temp.set_values[i] = _obj2.set_values[i];
+    }
+    for (int i = 0; i < size; i++) {
+        bool found = false;
+        for (int j = 0; j < _obj2.size; j++) {
+            if (set_values[i] == _obj2.set_values[j])
+                found = true;
+        }
+        if (!found)
+            temp.append(set_values[i]);
+    }
+    return temp;
 }
 
+/*
+ *  @summary    This function will add a value to a set value
+ *  @input      value   T value that is being added to the set
+ *  @output     None.
+ *  @other      None.
+ */
+template<class T>
+void Set<T>::append(T value) {
+    T *temp;
+    temp = set_values;
+    set_values = new T[size + 1];
 
-
-
-
-
+    for (int i = 0; i < size; i++) {
+        set_values[i] = temp[i];
+    }
+    set_values[size] = value;
+    size = size + 1;
+    delete[] temp;
+}
