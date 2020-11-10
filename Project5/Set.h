@@ -14,7 +14,7 @@ class Set {
         Set();
         Set(int,T*);
         Set(const Set<T>&);
-        ~Set();
+        ~Set()s ;
 
         Set<T> myUnion(const Set<T>& _obj2);
         Set<T> intersection(const Set<T>& _obj2);
