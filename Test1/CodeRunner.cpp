@@ -7,13 +7,27 @@
 
 using namespace std;
 
-PositiveInt() {
-    private: 
-        int num;
+
+template <class T>
+
+T sum(T,T){
+
+    static int p = 0;
+
+    p++;
+
+    cout << p << endl;
+
 }
 
-int PositiveInt::operator-(const PositiveInt &obj2)
-{
-    return num - obj2.num;
+int main(){
+
+    int a(10), sum1;
+
+    double f(3.1);
+
+    sum1 = sum(a,f);
+
+    return 0;
 
 }
